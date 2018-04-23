@@ -20,14 +20,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    UIImageView *firstImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-in-Field"]];
-    [self.scrollView addSubview:firstImageView];
-    UIImageView *secondImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-night"]];
-    [self.scrollView addSubview:secondImageView];
-    UIImageView *thirdImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-zoomed"]];
-    [self.scrollView addSubview:thirdImageView];
+    UIStackView *stackView = [[UIStackView alloc] init];
+    [self.scrollView addSubview:stackView];
+    
+    [stackView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [stackView.leftAnchor constraintEqualToAnchor:self.scrollView.leftAnchor].active = YES;
+    [stackView.rightAnchor constraintEqualToAnchor:self.scrollView.rightAnchor].active = YES;
+    [stackView.topAnchor constraintEqualToAnchor:self.scrollView.topAnchor].active = YES;
+    [stackView.bottomAnchor constraintEqualToAnchor:self.scrollView.bottomAnchor].active = YES;
+    
+    [stackView.widthAnchor constraintEqualToAnchor:self.scrollView.widthAnchor multiplier:self.images.count].active = YES;
+    [stackView.heightAnchor constraintEqualToAnchor:self.scrollView.heightAnchor multiplier:1.0].active = YES;
+    
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.distribution = UIStackViewDistributionFillEqually;
+    
+    for (UIImage *image in self.images) {
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        [stackView addArrangedSubview:imageView];
+        [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    
+    self.scrollView.pagingEnabled = YES;
 }
 
+-(NSArray <UIImage *> *)images {
+    return @[
+             [UIImage imageNamed:@"Lighthouse-in-Field"],
+             [UIImage imageNamed:@"Lighthouse-night"],
+             [UIImage imageNamed:@"Lighthouse-zoomed"]
+             ];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
