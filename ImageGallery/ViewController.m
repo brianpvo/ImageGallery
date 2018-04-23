@@ -47,7 +47,6 @@
         [imageView addGestureRecognizer:self.tapGesture];
         imageView.userInteractionEnabled = YES;
     }
-//    stackView.arrangedSubviews
     self.scrollView.pagingEnabled = YES;
 }
 
@@ -61,7 +60,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ZoomViewController *zoomVC = segue.destinationViewController;
     zoomVC.image = sender;
-    
 }
 
 -(NSArray <UIImage *> *)images {
