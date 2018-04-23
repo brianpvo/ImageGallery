@@ -7,11 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "ZoomViewController.h"
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, readonly) NSArray <UIImage *> *images;
+@property (nonatomic) UITapGestureRecognizer *tapGesture;
+@property (nonatomic) UIImage *currentImage;
 
 @end
 
@@ -40,9 +43,25 @@
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [stackView addArrangedSubview:imageView];
         [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        [imageView addGestureRecognizer:self.tapGesture];
+        imageView.userInteractionEnabled = YES;
     }
-    
+//    stackView.arrangedSubviews
     self.scrollView.pagingEnabled = YES;
+}
+
+-(void)imageTapped:(UITapGestureRecognizer *)sender {
+    NSLog(@"image index %f", self.scrollView.contentOffset.x / self.view.frame.size.width);
+    NSInteger index = self.scrollView.contentOffset.x / self.view.frame.size.width;
+    
+    [self performSegueWithIdentifier:@"detailedSegue" sender:self.images[index]];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ZoomViewController *zoomVC = segue.destinationViewController;
+    zoomVC.image = sender;
+    
 }
 
 -(NSArray <UIImage *> *)images {

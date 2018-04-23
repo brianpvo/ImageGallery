@@ -10,4 +10,6 @@
 
 @interface ZoomViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic) UIImage *image;
+
 @end
