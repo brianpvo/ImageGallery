@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSArray <UIImage *> *images;
 @property (nonatomic) UITapGestureRecognizer *tapGesture;
 @property (nonatomic) UIImage *currentImage;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end
 
@@ -50,8 +51,11 @@
     self.scrollView.pagingEnabled = YES;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.pageControl.currentPage = scrollView.contentOffset.x / self.view.frame.size.width;
+}
+
 -(void)imageTapped:(UITapGestureRecognizer *)sender {
-    NSLog(@"image index %f", self.scrollView.contentOffset.x / self.view.frame.size.width);
     NSInteger index = self.scrollView.contentOffset.x / self.view.frame.size.width;
     
     [self performSegueWithIdentifier:@"detailedSegue" sender:self.images[index]];

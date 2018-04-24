@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    UIImage *image = [UIImage imageNamed:@"Lighthouse-in-Field"];
     self.imageView = [[UIImageView alloc] initWithImage:self.image];
     
     [self.scrollView addSubview:self.imageView];

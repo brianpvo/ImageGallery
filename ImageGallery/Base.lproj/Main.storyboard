@@ -24,10 +24,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Mk0-MC-ZiD"/>
                                 </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nd9-CL-WDH">
+                                <rect key="frame" x="137.5" y="590" width="100" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="RMc-LD-1b9"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd9-CL-WDH" secondAttribute="bottom" constant="40" id="3MZ-pK-vV4"/>
                             <constraint firstItem="nZJ-dZ-x7L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gfv-Qv-zf7"/>
+                            <constraint firstItem="nd9-CL-WDH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mp4-Iu-nbG"/>
                             <constraint firstItem="nZJ-dZ-x7L" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lNc-yb-7Dd"/>
                             <constraint firstItem="nZJ-dZ-x7L" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lsp-Gf-vdq"/>
                             <constraint firstItem="nZJ-dZ-x7L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uH0-OX-ERa"/>
@@ -36,6 +45,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="g27-oK-1zF"/>
                     <connections>
+                        <outlet property="pageControl" destination="nd9-CL-WDH" id="qTO-KA-YHR"/>
                         <outlet property="scrollView" destination="nZJ-dZ-x7L" id="BWm-jZ-VjA"/>
                         <segue destination="WER-Pr-CfN" kind="show" identifier="detailedSegue" id="ULq-b3-knj"/>
                     </connections>
@@ -58,7 +68,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KL-jp-eBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="376"/>
+            <point key="canvasLocation" x="-702" y="131"/>
         </scene>
         <!--Zoom View Controller-->
         <scene sceneID="nGq-Zw-MKw">
@@ -90,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wg9-ub-8Ot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="130.88455772113943"/>
+            <point key="canvasLocation" x="886" y="131"/>
         </scene>
     </scenes>
 </document>
